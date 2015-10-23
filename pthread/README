@@ -17,3 +17,40 @@ Actividad 1 - introducción
 	Todas las ejecuciones son iguales?
 		R/ Ejecutando el programa varias veces, se observa que los resultados de las ejecuciones varía de una a otra, en la mayoría se observa el resultado descrito en la primera parte, donde solo a variable y se ve incrementada. Pero en algunas se alcanza a evidenciar la ejecución original donde las dos variables son incrementadas, o en otras se alcanza a ver el mensaje de “x increment finished” aunque no se vea la variable incrementada o solo se ve la variable incrementada y el mensaje no alcanza a salir. 
 	Esta variación se debe a él tiempo que tarda el proceso original y si este tiempo es suficiente a que el hilo termine o no. El resultado es muy variable, se convierte en no determinístico.
+
+Actividad 2
+
+	Archivo: 3s-00.c
+
+	Observación: El archivo original contiene un programa secuencial, el cual cuenta el número de veces que el número 3 aparece en un vector. 
+	La memoria del equipo local en el cual se corre el programa es de 4Gb en vez de 8Gb, por esta razón al correr el archivo original se produce un error:
+
+	Running 3s-00*** 3s-00 ***
+	Initializing vector... Allocation memory failed!
+
+	Para efectos de desarrollo del taller se disminuye la longitud del vector de 1000000000 a 100000000 y se sigue con la ejecución.
+	Obteniendo un tiempo de 
+	
+	Elapsed time 379.159973
+	
+	El tiempo se está contabilizando en dos variables t1 y t2, en este momento se muestra la diferencia de tiempo entre la una y la otra, t1 contiene el tiempo del reloj después de inicializar el vector y t2 el tiempo posterior.
+	
+	Añadir las sentencias adecuadas para determinar la cantidad de tiempo que el programa pasa durante:
+	
+	Vector de inicialización.
+	
+		R/ Se creará una nueva variable t0 que tomará el tiempo del reloj antes de empezar a inicializar el vector, posteriormente se restará a la variable t3, la cual toma el tiempo del reloj posterior a la inicialización, para capturar el tiempo que se tarda en este proceso.
+	
+	Contar el número de 3s en un vector dado.
+	
+		R/ Se retoma las variables t1 y t2 que el programa tiene en su versión original y se muestra su diferencia como el tiempo transcurrido durante esta ejecución.
+	
+	Resultados obtenidos
+	
+	Running 3s-00*** 3s-00 ***
+	Initializing vector... Vector initialized!
+	Count by threads 4999073
+	Double check 4999073
+	[[3s-00] Elapsed time 376.639984
+	[[3s-00] Initialize vector time 1371.609009
+	[[3s-00] Count 3s time 376.639984
