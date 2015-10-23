@@ -1,4 +1,4 @@
-<b> Actividad 1 - introducción</b>
+#Actividad 1 - introducción
 Archivo: thread_101_1.c
 Observación: El archivo original tiene dos variables x  y y que se incrementan de 0 hasta 100, la variable x es incrementada por un proceso enviado a un hilo, mientras la variable y se sigue ejecutando en el proceso principal, al final hay un join, el cual espera a la terminación del hilo en ejecución para imprimir finalmente las dos variables.
 Remover las instrucciones del join y explicar:
