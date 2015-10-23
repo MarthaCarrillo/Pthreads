@@ -1,13 +1,13 @@
-#Actividad 1 - introducción
-Archivo: thread_101_1.c
-Observación: El archivo original tiene dos variables x  y y que se incrementan de 0 hasta 100, la variable x es incrementada por un proceso enviado a un hilo, mientras la variable y se sigue ejecutando en el proceso principal, al final hay un join, el cual espera a la terminación del hilo en ejecución para imprimir finalmente las dos variables.
-Remover las instrucciones del join y explicar:
-Como es el comportamiento del programa?
-	R/ Al remover todo el bloque relacionado con la instrucción join phtread_join, resultado es variable, no se muestra el incremento de la variable x, sino que únicamente se muestra la variable y incrementada.
-Si es inesperado, como se explica?
-	R/ Al no esperar a que el hilo finalice, la impresión solo muestra el incremento de la variable y que se realizó en el proceso principal, y no se actualiza a tiempo el valor de la variable x, la cual está siendo incrementada por un hilo en ejecución.
-
-Correr el programa varias veces y explicar:
-Todas las ejecuciones son iguales?
-	R/ Ejecutando el programa varias veces, se observa que los resultados de las ejecuciones varía de una a otra, en la mayoría se observa el resultado descrito en la primera parte, donde solo a variable y se ve incrementada. Pero en algunas se alcanza a evidenciar la ejecución original donde las dos variables son incrementadas, o en otras se alcanza a ver el mensaje de “x increment finished” aunque no se vea la variable incrementada o solo se ve la variable incrementada y el mensaje no alcanza a salir. 
-Esta variación se debe a él tiempo que tarda el proceso original y si este tiempo es suficiente a que el hilo termine o no. El resultado es muy variable, se convierte en no determinístico.
+Actividad 1 - introducción
+	Archivo: thread_101_1.c
+	Observación: El archivo original tiene dos variables x  y y que se incrementan de 0 hasta 100, la variable x es incrementada por un proceso enviado a un hilo, mientras la variable y se sigue ejecutando en el proceso principal, al final hay un join, el cual espera a la terminación del hilo en ejecución para imprimir finalmente las dos variables.
+	Remover las instrucciones del join y explicar:
+	Como es el comportamiento del programa?
+		R/ Al remover todo el bloque relacionado con la instrucción join phtread_join, resultado es variable, no se muestra el incremento de la variable x, sino que únicamente se muestra la variable y incrementada.
+	Si es inesperado, como se explica?
+		R/ Al no esperar a que el hilo finalice, la impresión solo muestra el incremento de la variable y que se realizó en el proceso principal, y no se actualiza a tiempo el valor de la variable x, la cual está siendo incrementada por un hilo en ejecución.
+	
+	Correr el programa varias veces y explicar:
+	Todas las ejecuciones son iguales?
+		R/ Ejecutando el programa varias veces, se observa que los resultados de las ejecuciones varía de una a otra, en la mayoría se observa el resultado descrito en la primera parte, donde solo a variable y se ve incrementada. Pero en algunas se alcanza a evidenciar la ejecución original donde las dos variables son incrementadas, o en otras se alcanza a ver el mensaje de “x increment finished” aunque no se vea la variable incrementada o solo se ve la variable incrementada y el mensaje no alcanza a salir. 
+	Esta variación se debe a él tiempo que tarda el proceso original y si este tiempo es suficiente a que el hilo termine o no. El resultado es muy variable, se convierte en no determinístico.
