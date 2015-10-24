@@ -56,7 +56,9 @@ Actividad 2
 	[[3s-00] Count 3s time 376.639984
 
 Actividad 3
+
 	Archivo: 3s-01.c
+
 	Observación: El archivo original contiene un programa paralelo con hilos, los hilos son utilizados para contar el número de veces que el número 3 aparece en un vector. 
 	La memoria del equipo local en el cual se corre el programa es de 4Gb en vez de 8Gb, por esta razón al correr el archivo original se produce un error:
 	Initializing vector... Allocation memory failed!
@@ -87,4 +89,55 @@ Actividad 3
 	[3s-01] Thread created!
 	[3s-01] Count by threads 1413
 	[3s-01] Double check 4995601
-	[[3s-01] Elapsed time 0.321000
+	
+Actividad 4
+
+	Archivo: 3s-02.c
+	
+	Observación: Este archivo es de programación paralela, es más preciso que el anterior pero no es exacto.
+	Incluya las frases de código utilizadas para estimar la cantidad de tiempo necesario para cada hilo para contar el número de 3s en un vector. Responda las preguntas:
+	
+	¿Que está mal esta vez?.
+		R/ Los hilos acceden de forma simultánea y por así decirlo desordenada, al recurso que es la variable count, por tal razón al unificar los resultados estos no coinciden con la variable de chequeo.
+	
+	Resultados obtenidos
+	*** 3s-02 ***
+	Initializing vector... Vector initialized!
+	[3s-02] Thread created!
+		Thread [0] starts [0] length [12500000]
+	[3s-02] Thread created!
+		Thread [1] starts [12500000] length [12500000]
+	[3s-02] Thread created!
+	[3s-02] Thread created!
+	[3s-02] Thread created!
+	[3s-02] Thread created!
+	[3s-02] Thread created!
+	[3s-02] Thread created!
+		Thread [3] starts [37500000] length [12500000]
+		Thread [4] starts [50000000] length [12500000]
+		Thread [5] starts [62500000] length [12500000]
+		Thread [2] starts [25000000] length [12500000]
+		Thread [6] starts [75000000] length [12500000]
+		Thread [7] starts [87500000] length [12500000]
+		[Thread [4]] Elapsed time 312.453003
+		[Thread [3]] Elapsed time 368.770996
+		[Thread [2]] Elapsed time 527.112000
+		[Thread [1]] Elapsed time 597.980042
+		[Thread [0]] Elapsed time 649.909973
+		Thread [0] exited with status [37]
+		Thread [1] exited with status [37]
+		Thread [2] exited with status [37]
+		Thread [3] exited with status [37]
+		Thread [4] exited with status [37]
+		[Thread [5]] Elapsed time 617.174011
+		Thread [5] exited with status [37]
+		[Thread [7]] Elapsed time 610.984985
+		[Thread [6]] Elapsed time 615.299011
+		Thread [6] exited with status [37]
+		Thread [7] exited with status [37]
+		[3s-02] Count by threads 2438562
+		[3s-02] Double check 5001561
+		[[3s-02] Elapsed time 659.923950
+
+		[[3s-01] Elapsed time 0.321000
+
