@@ -272,3 +272,86 @@ Actividad 6
 	desbloqueo, este proceso implica un costo (en tiempo) el cual se ve claramente reflejado en 
 	el resultado de tiempo total.
 
+Actividad 7
+
+	Archivo: 3s-05.c
+	
+	Observación: Esta vez el programa tiene éxito.
+	
+	a.¿Donde reside el éxito del programa?.
+		R/Este programa no repite demasiadas veces el bloqueo y desbloqueo del recurso, porque no están incluidos dentro del ciclo for, como si estaba haciendo el programa 3s-04, tampoco bloquea demasiado tiempo mientras todo el for se ejecuta, como se hacía en el programa 3s-03. Este programa utiliza una variable local al hilo para ser incrementada dentro del ciclo for y posteriormente cuando ya tiene su conteo se suma al conteo general, es en este momento donde se aplica el bloqueo y desbloqueo del recurso (la variable count). De esta manera fusiona lo mejor de los dos anteriores y evita lo malo de ambas.
+	También define cuatro hilos en vez de 8 como en los programas anteriores, lo cual permite una mejor ejecución ya que los 4 hilos toman un núcleo a la vez y no tienen que esperar que los primeros cuatro se ejecutan.
+
+	b. ¿Compare esto ejecución del programa y comparar su rendimiento con casos anteriores y escribir sus observaciones?.
+	R/ Este programa tiene un mejor tiempo, aunque no sé, si por el equipo que se está usando para las pruebas, pero es el programa 3s-03 el que mejor tiempo tiene:
+
+	[[3s-05] Threads max time 3328.334961 
+	[[3s-05] Threads max time 3321.950928 
+	[[3s-05] Threads max time 3296.516846 
+
+	Promedio: 3315
+
+	Resultados obtenidos
+	[3s-05] Using 4 threads
+	*** 3s-05 ***
+	Initializing vector... Vector initialized!
+	[3s-05] Thread created!
+		Thread [0] starts [0] length [25000000]
+	[3s-05] Thread created!
+		Thread [1] starts [25000000] length [25000000]
+	[3s-05] Thread created!
+	[3s-05] Thread created!
+		Thread [2] starts [50000000] length [25000000]
+		Thread [3] starts [75000000] length [25000000]
+	Thread [0] exited with status [0]
+	Thread [1] exited with status [1]
+	Thread [2] exited with status [2]
+	Thread [3] exited with status [3]
+	[3s-05] Count by threads 5000877
+	[3s-05] Double check 5000877
+	[[3s-05] Elapsed time 3338.729004
+	[Thread [0]] Elapsed time 3338.213867
+	[Thread [1]] Elapsed time 3313.013184
+	[Thread [2]] Elapsed time 3216.139160
+	[Thread [3]] Elapsed time 3187.645996
+	[[3s-05] Threads total time 13055.011719 
+	[[3s-05] Threads max time 3338.213867 
+
+Actividad 8 Asignación final
+	
+	Archivo: 3s-06.c
+	Implementar la solución propuesta en la página 20 del libro
+	Observación: Esta vez el programa tiene éxito, y mejora el tiempo obtenido por los programas 3s-04 y 3s-05. Aunque no alcanza a mejorar el tiempo de 3s-03. Este programa no solo crea una variable local a cada hilo que determina el conteo del mismo para luego acumularlo al conteo final, sino que también completa el espacio en memoria para garantizar que cada valor sea ocupado por una línea completa, de esta forma disminuye los tiempos. 
+	Tiempos:
+	[[3s-05] Threads max time 2559.125000 
+	[[3s-05] Threads max time 2552.524170 
+	[[3s-05] Threads max time 2548.263916 
+	
+	promedio: 2553
+
+	Resultado obtenido
+	[3s-06] Using 4 threads
+	*** 3s-06 ***
+	Initializing vector... Vector initialized!
+	[3s-06] Thread created!
+		Thread [0] starts [0] length [25000000]
+	[3s-06] Thread created!
+	[3s-06] Thread created!
+		Thread [1] starts [25000000] length [25000000]
+	[3s-06] Thread created!
+		Thread [2] starts [50000000] length [25000000]
+		Thread [3] starts [75000000] length [25000000]
+	Thread [0] exited with status [0]
+	Thread [1] exited with status [1]
+	Thread [2] exited with status [2]
+	Thread [3] exited with status [3]
+	[3s-06] Count by threads 4999547
+	[3s-06] Double check 4999547
+	[[3s-06] Elapsed time 2568.354004
+	[Thread [0]] Elapsed time 2567.825928
+	[Thread [1]] Elapsed time 2546.861816
+	[Thread [2]] Elapsed time 2462.885986
+	[Thread [3]] Elapsed time 2471.118896
+	[[3s-06] Threads total time 10048.692383 
+	[[3s-06] Threads max time 2567.825928 
+
