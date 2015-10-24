@@ -152,48 +152,74 @@ Actividad 5
 	
 	b. ¿Cuánto tiempo llevó a obtener el recuento total de 3s en todo el vector?.
 	R/ En esta ocasión el tiempo máximo de los hilos que corresponde casi al tiempo total de obtener el recuento en todo el vector es de:
-	[[3s-03] Threads max time 2002.682983 
+		[[3s-03] Threads max time 2002.682983 
+		
+		[[3s-03] Elapsed time 2004.285156
 	
-	[[3s-03] Elapsed time 2004.285156
+		Resultados obtenidos
+		[3s-03] Using 8 threads
+		*** 3s-03 ***
+		Initializing vector... Vector initialized!
+		[3s-03] Thread created!
+			Thread [0] starts [0] length [12500000]
+		[3s-03] Thread created!
+			Thread [1] starts [12500000] length [12500000]
+		[3s-03] Thread created!
+			Thread [2] starts [25000000] length [12500000]
+		[3s-03] Thread created!
+			Thread [3] starts [37500000] length [12500000]
+		[3s-03] Thread created!
+			Thread [4] starts [50000000] length [12500000]
+		[3s-03] Thread created!
+			Thread [5] starts [62500000] length [12500000]
+		[3s-03] Thread created!
+			Thread [6] starts [75000000] length [12500000]
+		[3s-03] Thread created!
+			Thread [7] starts [87500000] length [12500000]
+		Thread [0] exited with status [0]
+		Thread [1] exited with status [1]
+		Thread [2] exited with status [2]
+		Thread [3] exited with status [3]
+		Thread [4] exited with status [4]
+		Thread [5] exited with status [5]
+		Thread [6] exited with status [6]
+		Thread [7] exited with status [7]
+		[3s-03] Count by threads 4996600
+		[3s-03] Double check 4996600
+		[[3s-03] Elapsed time 2004.285156
+		[Thread [0]] Elapsed time 249.697998
+		[Thread [1]] Elapsed time 496.796021
+		[Thread [2]] Elapsed time 745.978027
+		[Thread [3]] Elapsed time 994.485046
+		[Thread [4]] Elapsed time 1242.010010
+		[Thread [5]] Elapsed time 1491.075073
+		[Thread [6]] Elapsed time 1740.602051
+		[Thread [7]] Elapsed time 2002.682983
+		[[3s-03] Threads total time 8963.327148 
+		[[3s-03] Threads max time 2002.682983 
+	
+Actividad 6
 
-	Resultados obtenidos
-	[3s-03] Using 8 threads
-	*** 3s-03 ***
-	Initializing vector... Vector initialized!
-	[3s-03] Thread created!
-		Thread [0] starts [0] length [12500000]
-	[3s-03] Thread created!
-		Thread [1] starts [12500000] length [12500000]
-	[3s-03] Thread created!
-		Thread [2] starts [25000000] length [12500000]
-	[3s-03] Thread created!
-		Thread [3] starts [37500000] length [12500000]
-	[3s-03] Thread created!
-		Thread [4] starts [50000000] length [12500000]
-	[3s-03] Thread created!
-		Thread [5] starts [62500000] length [12500000]
-	[3s-03] Thread created!
-		Thread [6] starts [75000000] length [12500000]
-	[3s-03] Thread created!
-		Thread [7] starts [87500000] length [12500000]
-	Thread [0] exited with status [0]
-	Thread [1] exited with status [1]
-	Thread [2] exited with status [2]
-	Thread [3] exited with status [3]
-	Thread [4] exited with status [4]
-	Thread [5] exited with status [5]
-	Thread [6] exited with status [6]
-	Thread [7] exited with status [7]
-	[3s-03] Count by threads 4996600
-	[3s-03] Double check 4996600
-	[[3s-03] Elapsed time 2004.285156
-	[Thread [0]] Elapsed time 249.697998
-	[Thread [1]] Elapsed time 496.796021
-	[Thread [2]] Elapsed time 745.978027
-	[Thread [3]] Elapsed time 994.485046
-	[Thread [4]] Elapsed time 1242.010010
-	[Thread [5]] Elapsed time 1491.075073
-	[Thread [6]] Elapsed time 1740.602051
-	[Thread [7]] Elapsed time 2002.682983
-	[[3s-03] Threads total time 8963.327148 
-	[[3s-03] Threads max time 2002.682983 
+	Archivo: 3s-04.c
+	Observación: Esta vez el programa tiene una leve diferencia.
+
+	¿Cual es la diferencia con 3s-03.c?.
+		R/ en el nuevo programa se aplica el bloqueo al recurso únicamente mientras la variable count es incrementada y no durante la ejecución total del ciclo for.
+
+	b. ¿Comparar el tiempo transcurrido por hilo durante el proceso de conteo y el tiempo total que todos los hilos tomaron para contar el número de 3s en todo el vector. Ejecutar todos los programas (3s-03 y 3s-04) tres veces y calcular el tiempo promedio por programa. Presente sus resultados y explicarlos?.
+	R/ el programa 3s-03 tarda menos que el programa 3s-04
+	tiempos:
+	[[3s-03] Threads max time 1990
+	[[3s-04] Threads max time 18529
+	
+	[[3s-03] Threads max time 1992 
+	[[3s-04] Threads max time 18339
+	
+	[[3s-03] Threads max time 1993
+	[[3s-04] Threads max time 18398
+	
+	Programa 3s-03 promedio 1991.6666
+	Programa 3s-04 promedio 18422
+
+	Explicación: Cuando el programa 3s-04 aplica el bloqueo en el recurso que es la variable count, únicamente en vez de a todo el ciclo for (Programa 3s-03), se ejecuta más veces el bloqueo y desbloqueo, este proceso implica un costo (en tiempo) el cual se ve claramente reflejado en el resultado de tiempo total.
+
