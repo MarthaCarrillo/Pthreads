@@ -111,7 +111,7 @@ int main(int argc, char* argv[]) {
 	for(; i<max_threads; i++){
 		printf("[Thread [%d]] Elapsed time %f\n",i , times[i]);
 		totalt = totalt + times[i];
-		if(totalt > maxt) 
+		if(times[i] > maxt) 
 			maxt = times[i];	
 	}
 	printf("[[3s-03] Threads total time %f \n", totalt);
