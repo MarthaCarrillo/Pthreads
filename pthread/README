@@ -141,3 +141,59 @@ Actividad 4
 
 		[[3s-01] Elapsed time 0.321000
 
+Actividad 5
+	Archivo: 3s-03.c
+	
+	Observación: Esta vez el programa hace  lo que tiene que hacer.
+	Incluya las frases de código utilizadas para estimar la cantidad de tiempo necesario para cada hilo para contar el número de 3s en un vector. Responda las preguntas:
+	
+	a. ¿Porque funciona esta vez?.
+		R/ En esta ocasión se incluyen las instrucciones de acceso sincronizado al recurso de bloque pthread_mutex_lock(&mutex); y de desbloqueo pthread_mutex_unlock(&mutex); dentro de cada hilo . Y las instrucciones de pthread_mutex_init(&mutex,NULL); para inicializar y pthread_mutex_destroy(&mutex); para finalizar.
+	
+	b. ¿Cuánto tiempo llevó a obtener el recuento total de 3s en todo el vector?.
+	R/ En esta ocasión el tiempo máximo de los hilos que corresponde casi al tiempo total de obtener el recuento en todo el vector es de:
+	[[3s-03] Threads max time 2002.682983 
+	
+	[[3s-03] Elapsed time 2004.285156
+
+	Resultados obtenidos
+	[3s-03] Using 8 threads
+	*** 3s-03 ***
+	Initializing vector... Vector initialized!
+	[3s-03] Thread created!
+		Thread [0] starts [0] length [12500000]
+	[3s-03] Thread created!
+		Thread [1] starts [12500000] length [12500000]
+	[3s-03] Thread created!
+		Thread [2] starts [25000000] length [12500000]
+	[3s-03] Thread created!
+		Thread [3] starts [37500000] length [12500000]
+	[3s-03] Thread created!
+		Thread [4] starts [50000000] length [12500000]
+	[3s-03] Thread created!
+		Thread [5] starts [62500000] length [12500000]
+	[3s-03] Thread created!
+		Thread [6] starts [75000000] length [12500000]
+	[3s-03] Thread created!
+		Thread [7] starts [87500000] length [12500000]
+	Thread [0] exited with status [0]
+	Thread [1] exited with status [1]
+	Thread [2] exited with status [2]
+	Thread [3] exited with status [3]
+	Thread [4] exited with status [4]
+	Thread [5] exited with status [5]
+	Thread [6] exited with status [6]
+	Thread [7] exited with status [7]
+	[3s-03] Count by threads 4996600
+	[3s-03] Double check 4996600
+	[[3s-03] Elapsed time 2004.285156
+	[Thread [0]] Elapsed time 249.697998
+	[Thread [1]] Elapsed time 496.796021
+	[Thread [2]] Elapsed time 745.978027
+	[Thread [3]] Elapsed time 994.485046
+	[Thread [4]] Elapsed time 1242.010010
+	[Thread [5]] Elapsed time 1491.075073
+	[Thread [6]] Elapsed time 1740.602051
+	[Thread [7]] Elapsed time 2002.682983
+	[[3s-03] Threads total time 8963.327148 
+	[[3s-03] Threads max time 2002.682983 
