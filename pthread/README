@@ -2,48 +2,71 @@ Actividad 1 - introducción
 	
 	Archivo: thread_101_1.c
 	
-	Observación: El archivo original tiene dos variables x  y y que se incrementan de 0 hasta 100, la variable x es incrementada por un proceso enviado a un hilo, mientras la variable y se sigue ejecutando en el proceso principal, al final hay un join, el cual espera a la terminación del hilo en ejecución para imprimir finalmente las dos variables.
+	Observación: El archivo original tiene dos variables x  y y que se incrementan de 0 hasta 100, 
+	la variable x es incrementada por un proceso enviado a un hilo, mientras la variable y se sigue 
+	ejecutando en el proceso principal, al final hay un join, el cual espera a la terminación del 
+	hilo en ejecución para imprimir finalmente las dos variables.
 
 	Remover las instrucciones del join y explicar:
 	
 	Como es el comportamiento del programa?
-		R/ Al remover todo el bloque relacionado con la instrucción join phtread_join, resultado es variable, no se muestra el incremento de la variable x, sino que únicamente se muestra la variable y incrementada.
+		R/ Al remover todo el bloque relacionado con la instrucción join phtread_join, 
+		resultado es variable, no se muestra el incremento de la variable x, sino que únicamente
+		se muestra la variable y incrementada.
 	
 	Si es inesperado, como se explica?
-		R/ Al no esperar a que el hilo finalice, la impresión solo muestra el incremento de la variable y que se realizó en el proceso principal, y no se actualiza a tiempo el valor de la variable x, la cual está siendo incrementada por un hilo en ejecución.
+		R/ Al no esperar a que el hilo finalice, la impresión solo muestra el incremento de 
+		la variable y que se realizó en el proceso principal, y no se actualiza a tiempo el 
+		valor de la variable x, la cual está siendo incrementada por un hilo en ejecución.
 	
 	Correr el programa varias veces y explicar:
 	
 	Todas las ejecuciones son iguales?
-		R/ Ejecutando el programa varias veces, se observa que los resultados de las ejecuciones varía de una a otra, en la mayoría se observa el resultado descrito en la primera parte, donde solo a variable y se ve incrementada. Pero en algunas se alcanza a evidenciar la ejecución original donde las dos variables son incrementadas, o en otras se alcanza a ver el mensaje de “x increment finished” aunque no se vea la variable incrementada o solo se ve la variable incrementada y el mensaje no alcanza a salir. 
-	Esta variación se debe a él tiempo que tarda el proceso original y si este tiempo es suficiente a que el hilo termine o no. El resultado es muy variable, se convierte en no determinístico.
+		R/ Ejecutando el programa varias veces, se observa que los resultados de las ejecuciones
+		varía de una a otra, en la mayoría se observa el resultado descrito en la primera parte,
+		donde solo a variable y se ve incrementada. Pero en algunas se alcanza a evidenciar la
+		ejecución original donde las dos variables son incrementadas, o en otras se alcanza a 
+		ver el mensaje de “x increment finished” aunque no se vea la variable incrementada o 
+		solo se ve la variable incrementada y el mensaje no alcanza a salir. 
+		
+	Esta variación se debe a él tiempo que tarda el proceso original y si este tiempo es 
+	suficiente a que el hilo termine o no. El resultado es muy variable, se convierte en no determinístico.
 
 Actividad 2
 
 	Archivo: 3s-00.c
 
-	Observación: El archivo original contiene un programa secuencial, el cual cuenta el número de veces que el número 3 aparece en un vector. 
-	La memoria del equipo local en el cual se corre el programa es de 4Gb en vez de 8Gb, por esta razón al correr el archivo original se produce un error:
+	Observación: El archivo original contiene un programa secuencial, el cual cuenta el número 
+	de veces que el número 3 aparece en un vector. 
+	La memoria del equipo local en el cual se corre el programa es de 4Gb en vez de 8Gb,
+	por esta razón al correr el archivo original se produce un error:
 
 	Running 3s-00*** 3s-00 ***
 	Initializing vector... Allocation memory failed!
 
-	Para efectos de desarrollo del taller se disminuye la longitud del vector de 1000000000 a 100000000 y se sigue con la ejecución.
+	Para efectos de desarrollo del taller se disminuye la longitud del vector de 1000000000 a 100000000 
+	y se sigue con la ejecución.
 	Obteniendo un tiempo de 
 	
 	Elapsed time 379.159973
 	
-	El tiempo se está contabilizando en dos variables t1 y t2, en este momento se muestra la diferencia de tiempo entre la una y la otra, t1 contiene el tiempo del reloj después de inicializar el vector y t2 el tiempo posterior.
+	El tiempo se está contabilizando en dos variables t1 y t2, en este momento se muestra la 
+	diferencia de tiempo entre la una y la otra, t1 contiene el tiempo del reloj después de 
+	inicializar el vector y t2 el tiempo posterior.
 	
 	Añadir las sentencias adecuadas para determinar la cantidad de tiempo que el programa pasa durante:
 	
 	Vector de inicialización.
 	
-		R/ Se creará una nueva variable t0 que tomará el tiempo del reloj antes de empezar a inicializar el vector, posteriormente se restará a la variable t3, la cual toma el tiempo del reloj posterior a la inicialización, para capturar el tiempo que se tarda en este proceso.
+		R/ Se creará una nueva variable t0 que tomará el tiempo del reloj antes de empezar a 
+		inicializar el vector, posteriormente se restará a la variable t3, la cual toma el 
+		tiempo del reloj posterior a la inicialización, para capturar el tiempo que se tarda 
+		en este proceso.
 	
 	Contar el número de 3s en un vector dado.
 	
-		R/ Se retoma las variables t1 y t2 que el programa tiene en su versión original y se muestra su diferencia como el tiempo transcurrido durante esta ejecución.
+		R/ Se retoma las variables t1 y t2 que el programa tiene en su versión original y se 
+		muestra su diferencia como el tiempo transcurrido durante esta ejecución.
 	
 	Resultados obtenidos
 	
@@ -59,19 +82,30 @@ Actividad 3
 
 	Archivo: 3s-01.c
 
-	Observación: El archivo original contiene un programa paralelo con hilos, los hilos son utilizados para contar el número de veces que el número 3 aparece en un vector. 
-	La memoria del equipo local en el cual se corre el programa es de 4Gb en vez de 8Gb, por esta razón al correr el archivo original se produce un error:
+	Observación: El archivo original contiene un programa paralelo con hilos, los hilos son 
+	utilizados para contar el número de veces que el número 3 aparece en un vector. 
+	La memoria del equipo local en el cual se corre el programa es de 4Gb en vez de 8Gb, por 
+	esta razón al correr el archivo original se produce un error:
 	Initializing vector... Allocation memory failed!
-	Para efectos de desarrollo del taller se disminuye la longitud del vector de 1000000000 a 100000000 y se sigue con la ejecución.
+	Para efectos de desarrollo del taller se disminuye la longitud del vector de 1000000000 a 
+	100000000 y se sigue con la ejecución.
 	Obteniendo un tiempo de 
 	[[3s-01] Elapsed time 0.321000
-	Igual que el archivo anterior el tiempo se está contabilizando en dos variables t1 y t2, en este momento se muestra la diferencia de tiempo entre la una y la otra, t1 contiene el tiempo del reloj después de inicializar el vector y t2 el tiempo posterior.
+	Igual que el archivo anterior el tiempo se está contabilizando en dos variables t1 y t2, en 
+	este momento se muestra la diferencia de tiempo entre la una y la otra, t1 contiene el tiempo
+	del reloj después de inicializar el vector y t2 el tiempo posterior.
 	
-	Incluya las frases de código utilizadas para estimar la cantidad de tiempo necesario para cada hilo para contar el número de 3s en un vector. Responda las preguntas:
+	Incluya las frases de código utilizadas para estimar la cantidad de tiempo necesario para cada 
+	hilo para contar el número de 3s en un vector. Responda las preguntas:
 	¿Cuántos elementos del vector grande tiene?.
-		R/ El nuevo vector tiene como tamaño máximo la cantidad de hilos 8, pero en ejecución solo se muestran 2 hilos.
-	El programa es la correcta? ¿Qué hay de malo en ello? ¿Qué valor el programa se pone y lo que es el valor esperado?.
-		R/ La programación falla en el punto en que no espera a los hilos no está efectuando el join que unirá la información de todos, al no esperar la terminación de los hilos no se puede confiar en los valores entregados. A pesar de todo el tiempo se ve reducido con respecto al programa anterior.
+		R/ El nuevo vector tiene como tamaño máximo la cantidad de hilos 8, pero en ejecución 
+		solo se muestran 2 hilos.
+	El programa es la correcta? ¿Qué hay de malo en ello? ¿Qué valor el programa se pone y lo que 
+	es el valor esperado?.
+		R/ La programación falla en el punto en que no espera a los hilos no está efectuando 
+		el join que unirá la información de todos, al no esperar la terminación de los hilos 
+		no se puede confiar en los valores entregados. A pesar de todo el tiempo se ve reducido 
+		con respecto al programa anterior.
 	
 	Resultados obtenidos
 	[3s-01] Using 8 threads
@@ -95,10 +129,13 @@ Actividad 4
 	Archivo: 3s-02.c
 	
 	Observación: Este archivo es de programación paralela, es más preciso que el anterior pero no es exacto.
-	Incluya las frases de código utilizadas para estimar la cantidad de tiempo necesario para cada hilo para contar el número de 3s en un vector. Responda las preguntas:
+	Incluya las frases de código utilizadas para estimar la cantidad de tiempo necesario para cada 
+	hilo para contar el número de 3s en un vector. Responda las preguntas:
 	
 	¿Que está mal esta vez?.
-		R/ Los hilos acceden de forma simultánea y por así decirlo desordenada, al recurso que es la variable count, por tal razón al unificar los resultados estos no coinciden con la variable de chequeo.
+		R/ Los hilos acceden de forma simultánea y por así decirlo desordenada, al recurso 
+		que es la variable count, por tal razón al unificar los resultados estos no coinciden con 
+		la variable de chequeo.
 	
 	Resultados obtenidos
 	*** 3s-02 ***
@@ -145,13 +182,18 @@ Actividad 5
 	Archivo: 3s-03.c
 	
 	Observación: Esta vez el programa hace  lo que tiene que hacer.
-	Incluya las frases de código utilizadas para estimar la cantidad de tiempo necesario para cada hilo para contar el número de 3s en un vector. Responda las preguntas:
+	Incluya las frases de código utilizadas para estimar la cantidad de tiempo necesario para cada 
+	hilo para contar el número de 3s en un vector. Responda las preguntas:
 	
 	a. ¿Porque funciona esta vez?.
-		R/ En esta ocasión se incluyen las instrucciones de acceso sincronizado al recurso de bloque pthread_mutex_lock(&mutex); y de desbloqueo pthread_mutex_unlock(&mutex); dentro de cada hilo . Y las instrucciones de pthread_mutex_init(&mutex,NULL); para inicializar y pthread_mutex_destroy(&mutex); para finalizar.
+		R/ En esta ocasión se incluyen las instrucciones de acceso sincronizado al recurso de 
+		bloque pthread_mutex_lock(&mutex); y de desbloqueo pthread_mutex_unlock(&mutex); dentro 
+		de cada hilo . Y las instrucciones de pthread_mutex_init(&mutex,NULL); para inicializar
+		y pthread_mutex_destroy(&mutex); para finalizar.
 	
 	b. ¿Cuánto tiempo llevó a obtener el recuento total de 3s en todo el vector?.
-	R/ En esta ocasión el tiempo máximo de los hilos que corresponde casi al tiempo total de obtener el recuento en todo el vector es de:
+	R/ En esta ocasión el tiempo máximo de los hilos que corresponde casi al tiempo total de obtener 
+	el recuento en todo el vector es de:
 		[[3s-03] Threads max time 2002.682983 
 		
 		[[3s-03] Elapsed time 2004.285156
@@ -204,9 +246,13 @@ Actividad 6
 	Observación: Esta vez el programa tiene una leve diferencia.
 
 	¿Cual es la diferencia con 3s-03.c?.
-		R/ en el nuevo programa se aplica el bloqueo al recurso únicamente mientras la variable count es incrementada y no durante la ejecución total del ciclo for.
+		R/ en el nuevo programa se aplica el bloqueo al recurso únicamente mientras la 
+		variable count es incrementada y no durante la ejecución total del ciclo for.
 
-	b. ¿Comparar el tiempo transcurrido por hilo durante el proceso de conteo y el tiempo total que todos los hilos tomaron para contar el número de 3s en todo el vector. Ejecutar todos los programas (3s-03 y 3s-04) tres veces y calcular el tiempo promedio por programa. Presente sus resultados y explicarlos?.
+	b. ¿Comparar el tiempo transcurrido por hilo durante el proceso de conteo y el tiempo 
+	total que todos los hilos tomaron para contar el número de 3s en todo el vector.
+	Ejecutar todos los programas (3s-03 y 3s-04) tres veces y calcular el tiempo promedio 
+	por programa. Presente sus resultados y explicarlos?.
 	R/ el programa 3s-03 tarda menos que el programa 3s-04
 	tiempos:
 	[[3s-03] Threads max time 1990
@@ -221,5 +267,8 @@ Actividad 6
 	Programa 3s-03 promedio 1991.6666
 	Programa 3s-04 promedio 18422
 
-	Explicación: Cuando el programa 3s-04 aplica el bloqueo en el recurso que es la variable count, únicamente en vez de a todo el ciclo for (Programa 3s-03), se ejecuta más veces el bloqueo y desbloqueo, este proceso implica un costo (en tiempo) el cual se ve claramente reflejado en el resultado de tiempo total.
+	Explicación: Cuando el programa 3s-04 aplica el bloqueo en el recurso que es la variable count, 
+	únicamente en vez de a todo el ciclo for (Programa 3s-03), se ejecuta más veces el bloqueo y 
+	desbloqueo, este proceso implica un costo (en tiempo) el cual se ve claramente reflejado en 
+	el resultado de tiempo total.
 
